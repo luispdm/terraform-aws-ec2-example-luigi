@@ -9,18 +9,18 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region  = "us-east-1"
 }
 
-module "apache" {
-  source          = "luispdm/ec2-example-luigi/aws"
-  vpc_id          = "vpc-00000000"
-  my_ip_with_cidr = "MY_OWN_IP_ADDRESS/32"
-  public_key      = "ssh-rsa XXXXX..."
-  instance_type   = "t2.micro"
+module "ec2-example-luigi" {
+  source        = "luispdm/ec2-example-luigi/aws"
+  vpc_id        = "vpc-00000000"
+  ssh_ip        = "MY_OWN_IP_ADDRESS/32"
+  public_key    = "ssh-rsa XXXXX..."
+  instance_type = "t2.micro"
 }
 
 output "public_ip" {
-  value = module.apache.public_ip
+  value = module.ec2-example-luigi.public_ip
 }
 ```
