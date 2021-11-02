@@ -12,7 +12,7 @@ resource "aws_key_pair" "ssh" {
 }
 
 data "template_file" "user_data" {
-  template = file("./userdata.yml")
+  template = file("${abspath(path.module)}/userdata.yaml")
 }
 
 data "aws_ami" "amazon-linux-2" {
