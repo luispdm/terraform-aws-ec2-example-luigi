@@ -13,11 +13,11 @@ provider "aws" {
 }
 
 module "apache" {
-	source = ".//terraform-aws-apache-example"
-	vpc_id = "vpc-00000000"
-	my_ip_with_cidr = "MY_OWN_IP_ADDRESS/32"
-	public_key = "ssh-rsa XXXXX..."
-	instance_type = "t2.micro"
+  source          = "luispdm/ec2-example-luigi/aws"
+  vpc_id          = "vpc-00000000"
+  my_ip_with_cidr = "MY_OWN_IP_ADDRESS/32"
+  public_key      = "ssh-rsa XXXXX..."
+  instance_type   = "t2.micro"
 }
 
 output "public_ip" {
