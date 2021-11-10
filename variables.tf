@@ -17,3 +17,9 @@ variable "public_key" {
   type        = string
   description = "Public key for SSH access"
 }
+
+variable "ami_id" {
+  type        = string
+  description = "ID of the AMI the EC2 uses (it defaults to an Amazon Linux 2 x86_64 in us-east-1)"
+  default     = "ami-01cc34ab2709337aa"
+}

@@ -22,21 +22,8 @@ data "template_file" "user_data" {
   template = file("${abspath(path.module)}/userdata.yml")
 }
 
-data "aws_ami" "amazon-linux-2" {
-  most_recent = true
-  owners      = ["amazon"]
-  filter {
-    name   = "owner-alias"
-    values = ["amazon"]
-  }
-  filter {
-    name   = "name"
-    values = ["amzn2-ami-hvm*"]
-  }
-}
-
 resource "aws_instance" "luigi-test" {
-  ami                    = data.aws_ami.amazon-linux-2.id
+  ami                    = var.ami_id
   subnet_id              = data.aws_subnet.az-a.id
   instance_type          = var.instance_type
   key_name               = aws_key_pair.ssh.key_name
