@@ -18,9 +18,14 @@ module "ec2-example-luigi" {
   ssh_ip        = "MY_OWN_IP_ADDRESS/32"
   public_key    = "ssh-rsa XXXXX..."
   instance_type = "t2.micro"
+  ami_id        = "my-ami-id"
 }
 
 output "public_ip" {
   value = module.ec2-example-luigi.public_ip
+}
+
+output "public_dns" {
+  value = module.ec2-example-luigi.public_dns
 }
 ```
